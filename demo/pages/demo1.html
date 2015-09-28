@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perceived Peformances</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="libs/animate.css" />
+    <style>
+        #demo {
+            position: absolute;
+            top:50%;left:50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <a href="demo1b.html" class="btn btn-success btn-lg">
+            click here for a<br>
+            <b>BLAZING FAST</b><br>
+            loading experience!
+        </a>
+    </div>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script>
+    var $btn = $('a').first();
+    setInterval(function() {
+        $btn.addClass('animated rubberBand');
+        setTimeout(function() {
+            $btn.removeClass('animated rubberBand');
+        }, 1000);
+    }, 2000);
+    </script>
+</body>
+</html>
