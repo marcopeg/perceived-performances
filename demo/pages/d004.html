@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>d004 - Perceived Peformances</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h3>AJAX Link</h3>
+        </div>
+        <a href="d003b.html" class="btn btn-primary">
+            Click here to load a content page
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+        <div id="content"></div>
+    </div>
+
+    <!-- loading curtain element -->
+    <div id="loading-curtain" class="text"><span>loading...</span></div>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="index.js"></script>
+    <script>
+
+    /**
+     * simple AJAX link handling
+     */
+    $('a').on('click', function(e) {
+        e.preventDefault();
+        $('#loading-curtain').show();
+        $.get($(this).attr('href'), function(res) {
+            $('#content').html('<hr>' + res);
+            $('#loading-curtain').hide();
+        });
+    });
+
+    
+    </script>
+</body>
+</html>
