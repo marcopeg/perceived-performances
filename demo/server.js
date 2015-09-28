@@ -6,13 +6,13 @@ var cheerio = require('cheerio');
 var app = express();
 
 // veeeery slow and painful loading experience (with chuck norris)
-app.get('/demo1b.html', serveWithDelay('demo1b.html', 20000));
+app.get('/d001b.html', serveWithDelay('d001b.html', 2000));
 
 // delayed ajax requests
-app.get('/p2.html', serveWithDelay('p2.html', 1));
-app.get('/p2-fast.html', serveWithDelay('p2.html', 800));
-app.get('/p2-slow.html', serveWithDelay('p2.html', 3000));
-app.get('/p2-death.html', serveWithDelay('p2.html', 10000));
+app.get('/p2.html', serveWithDelay('ajax-link.html', 1));
+app.get('/p2-fast.html', serveWithDelay('ajax-link.html', 800));
+app.get('/p2-slow.html', serveWithDelay('ajax-link.html', 3000));
+app.get('/p2-death.html', serveWithDelay('ajax-link.html', 10000));
 
 // static resources
 app.use(express.static(path.join(__dirname, 'node_modules')));
