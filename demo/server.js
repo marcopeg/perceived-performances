@@ -13,6 +13,10 @@ app.get('/d003b.html', serveWithDelay('ajax-link.html', 3000));
 app.get('/d004b.html', serveWithDelay('ajax-link.html', 3000));
 app.get('/d005b.html', serveWithDelay('ajax-link.html', 3000));
 app.get('/d006b.html', serveWithDelay('ajax-link.html', 3000));
+app.get('/d008b.html', serveWithDelay('ajax-link.html', 1500));
+app.get('/d008c.html', serveWithDelay('ajax-link.html', 1000));
+app.get('/d008d.html', serveWithDelay('ajax-link.html', 500));
+app.get('/d008e.html', serveWithDelay('ajax-link.html', 250));
 
 
 // static resources
