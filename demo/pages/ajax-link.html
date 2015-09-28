@@ -7,13 +7,23 @@
 <body>
     <div class="container">
         <div class="page-header">
-            <h1>Page2</h1>
+            <h3>Simple Content Page</h3>
         </div>
+        <a href="#back" class="btn btn-primary">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+        </a>
+        <hr />
         <div id="content">
-            <p>this is a response page</p>
+            <img src="{{random-gif}}">
         </div>
     </div>
     <script src="jquery/dist/jquery.js"></script>
-    <script src="index.js"></script>
+    <script>
+    $('[href=#back]').on('click', function(e) {
+        e.preventDefault();
+        window.history.back();
+    });
+    </script>
 </body>
 </html>
