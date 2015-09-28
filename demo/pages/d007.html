@@ -20,7 +20,7 @@
     <!-- loading curtain element -->
     <div id="loading-curtain" class="game">
         <div class="game-container">
-            
+            <canvas id="canvas" width="450" height="250"></canvas>
             <a href="#hide-curtain" class="game-close">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
@@ -47,7 +47,6 @@
     $('#loading-curtain .game-close').on('click', function() {
         $('#loading-curtain').hide();
         $(this).hide();
-        $('#loading-curtain').find('canvas').remove();
     });
 
 
@@ -56,8 +55,8 @@
     // http://thecodeplayer.com/walkthrough/html5-game-tutorial-make-a-snake-game-using-html5-canvas-jquery
     function startGame(){
 
-        $canvas = $('<canvas id="canvas" width="450" height="250"></canvas>');
-        $canvas.appendTo('#loading-curtain .game-container');
+        $canvas = $('#canvas');
+        $canvas.first().click();
 
         //Canvas stuff
         var canvas = $canvas[0];
@@ -65,8 +64,6 @@
         var w = $canvas.width();
         var h = $canvas.height();
 
-
-        
         //Lets save the cell width in a variable for easy control
         var cw = 10;
         var d;
@@ -214,7 +211,6 @@
             //The snake is now keyboard controllable
         });
 
-        $canvas.first().click();
     };
 
 
