@@ -17,6 +17,8 @@ app.get('/d008b.html', serveWithDelay('ajax-link.html', 1500));
 app.get('/d008c.html', serveWithDelay('ajax-link.html', 1000));
 app.get('/d008d.html', serveWithDelay('ajax-link.html', 500));
 app.get('/d008e.html', serveWithDelay('ajax-link.html', 250));
+app.get('/d008f.html', serveWithDelay('ajax-link.html', 2500));
+app.get('/d008g.html', serveWithDelay('ajax-link.html', 800));
 
 
 // static resources

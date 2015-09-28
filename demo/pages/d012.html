@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>d012 - Perceived Peformances</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h3>AJAX Link <small>- delay loading curtain</small></h3>
+        </div>
+        <a href="d008f.html" class="btn btn-primary">
+            2.5s
+        </a>
+        <a href="d008b.html" class="btn btn-primary">
+            1.5s
+        </a>
+        <a href="d008g.html" class="btn btn-primary">
+            0.8s
+        </a>
+        <a href="d008d.html" class="btn btn-primary">
+            0.5s
+        </a>
+        <a href="d008e.html" class="btn btn-primary">
+            0.25s
+        </a>
+        <div id="content"></div>
+    </div>
+
+    <!-- loading curtain element -->
+    <div id="loading-curtain" class="spinner"><span></span></div>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="index.js"></script>
+    <script>
+
+    /**
+     * simple AJAX link handling
+     */
+    $('a').on('click', function(e) {
+        var startDelay = 850;
+        var displayDuration = 1000;
+
+        // block default click behaviour
+        e.stopPropagation();
+        e.preventDefault();
+
+        var contentLoaded = $.Deferred();
+        var curtainHandled = $.Deferred();
+        var curtainDone = $.Deferred();
+        var curtainStarted;
+
+        // init content request & handle page update
+        $.get(e.target.href, function(data) {
+            contentLoaded.resolve();
+            if (!curtainStarted) {
+                $('#content').html('<hr>' + data);
+            } else {
+                curtainDone.then(function() {
+                    $('#content').html('<hr>' + data);
+                });
+            }
+        });
+
+        // delay the curtain handling
+        setTimeout(function() {
+            curtainStarted = true;
+
+            // no need for a curtain
+            if (contentLoaded.state() === 'resolved') return;
+
+            // display curtain
+            $('#loading-curtain').fadeIn();
+            setTimeout(curtainHandled.resolve, displayDuration);
+
+            // hide curtain
+            $.when(contentLoaded, curtainHandled).then(function() {
+                $('#loading-curtain').fadeOut();
+                setTimeout(curtainDone.resolve, 250);
+            });
+
+        }, startDelay);
+    });
+
+    </script>
+</body>
+</html>
