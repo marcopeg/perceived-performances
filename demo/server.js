@@ -6,7 +6,7 @@ var cheerio = require('cheerio');
 var app = express();
 
 // veeeery slow and painful loading experience (with chuck norris)
-app.get('/d001b.html', serveWithDelay('d001b.html', 2000));
+app.get('/d001b.html', serveWithDelay('d001b.html', 20000));
 
 // delayed ajax requests
 app.get('/p2.html', serveWithDelay('ajax-link.html', 1));
