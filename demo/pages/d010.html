@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>d010 - Perceived Peformances</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h3>AJAX too Fast <small>- <b>sell</b> time!</small></h3>
+        </div>
+        <a href="d008b.html" class="btn btn-primary">
+            1.5s
+        </a>
+        <a href="d008c.html" class="btn btn-primary">
+            1s
+        </a>
+        <a href="d008d.html" class="btn btn-primary">
+            0.5s
+        </a>
+        <a href="d008e.html" class="btn btn-primary">
+            0.25s
+        </a>
+        <div id="content"></div>
+    </div>
+
+    <!-- loading curtain element -->
+    <div id="loading-curtain" class="ads">
+        <a href="https://www.paypal.com/home" target="_blank">
+            <img src="images/buy-me-beer.png" />
+        </a>
+    </div>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="index.js"></script>
+    <script>
+
+    /**
+     * simple AJAX link handling
+     */
+    $('.container a').on('click', function(e) {
+        e.preventDefault();
+        $('#loading-curtain').show();
+        $.get($(this).attr('href'), function(res) {
+            setTimeout(function() {
+                $('#content').html('<hr>' + res);
+                $('#loading-curtain').hide();
+            }, 2500);
+        });
+    });
+
+    </script>
+</body>
+</html>
