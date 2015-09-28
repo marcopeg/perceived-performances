@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>d011 - Perceived Peformances</title>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h3>AJAX Link <small>- smooth loading curtain</small></h3>
+        </div>
+        <a href="d008b.html" class="btn btn-primary">
+            1.5s
+        </a>
+        <a href="d008c.html" class="btn btn-primary">
+            1s
+        </a>
+        <a href="d008d.html" class="btn btn-primary">
+            0.5s
+        </a>
+        <a href="d008e.html" class="btn btn-primary">
+            0.25s
+        </a>
+        <div id="content"></div>
+    </div>
+
+    <!-- loading curtain element -->
+    <div id="loading-curtain" class="spinner"><span></span></div>
+
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="index.js"></script>
+    <script>
+
+    /**
+     * simple AJAX link handling
+     */
+    $('a').on('click', function(e) {
+        e.preventDefault();
+        $('#loading-curtain').fadeIn();
+        $.get($(this).attr('href'), function(res) {
+            setTimeout(function() {
+                $('#loading-curtain').fadeOut();
+                setTimeout(function() {
+                    $('#content').html('<hr>' + res);
+                }, 300);
+            }, 1000);
+        });
+    });
+
+    </script>
+</body>
+</html>
