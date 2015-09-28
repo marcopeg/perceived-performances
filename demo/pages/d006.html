@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>d005 - Perceived Peformances</title>
+    <title>d006 - Perceived Peformances</title>
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
     <div class="container">
         <div class="page-header">
-            <h3>AJAX Link <small>- loading spinner</small></h3>
+            <h3>AJAX Link <small>- smooth loading spinner</small></h3>
         </div>
-        <a href="d005b.html" class="btn btn-primary">
+        <a href="d006b.html" class="btn btn-primary">
             Click here to load a content page
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </a>
@@ -29,10 +29,10 @@
      */
     $('a').on('click', function(e) {
         e.preventDefault();
-        $('#loading-curtain').show();
+        $('#loading-curtain').fadeIn();
         $.get($(this).attr('href'), function(res) {
             $('#content').html('<hr>' + res);
-            $('#loading-curtain').hide();
+            $('#loading-curtain').fadeOut();
         });
     });
 

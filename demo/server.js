@@ -10,6 +10,9 @@ var app = express();
 app.get('/ajax-link.html', serveWithDelay('ajax-link.html', 0));
 app.get('/d001b.html', serveWithDelay('d001b.html', 20000));
 app.get('/d003b.html', serveWithDelay('ajax-link.html', 3000));
+app.get('/d004b.html', serveWithDelay('ajax-link.html', 3000));
+app.get('/d005b.html', serveWithDelay('ajax-link.html', 3000));
+app.get('/d006b.html', serveWithDelay('ajax-link.html', 3000));
 
 
 // static resources
