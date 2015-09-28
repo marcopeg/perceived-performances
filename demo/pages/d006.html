@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <div class="page-header">
-            <h3>AJAX Link <small>- smooth loading spinner</small></h3>
+            <h3>AJAX Link <small>- loading gif</small></h3>
         </div>
         <a href="d006b.html" class="btn btn-primary">
             Click here to load a content page
@@ -18,7 +18,7 @@
     </div>
 
     <!-- loading curtain element -->
-    <div id="loading-curtain" class="spinner"><span></span></div>
+    <div id="loading-curtain" class="gif"><span></span></div>
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="index.js"></script>
@@ -29,10 +29,10 @@
      */
     $('a').on('click', function(e) {
         e.preventDefault();
-        $('#loading-curtain').fadeIn();
+        $('#loading-curtain').show();
         $.get($(this).attr('href'), function(res) {
             $('#content').html('<hr>' + res);
-            $('#loading-curtain').fadeOut();
+            $('#loading-curtain').hide();
         });
     });
 

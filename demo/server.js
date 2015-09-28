@@ -51,7 +51,9 @@ function serveWithDelay(uri, delay) {
 
 
 function randomGif() {
-    var gifs = fs.readdirSync(path.join(__dirname, 'pages', 'gifs'));
+    var gifs = fs.readdirSync(path.join(__dirname, 'pages', 'gifs')).filter(function(fname) {
+        return fname.indexOf('chuck-norris') !== -1;
+    });
     return ['gifs', randomItem(gifs)].join('/');
 }
 

@@ -50,3 +50,10 @@
         -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     }
 }
+
+#loading-curtain.gif {
+    background-image: url(gifs/clouds.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
