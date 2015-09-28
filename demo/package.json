@@ -1,0 +1,31 @@
+{
+  "name": "perceived-performances-demo",
+  "version": "1.0.0",
+  "description": "demo for a perceived performances talk",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcopeg/perceived-performances.git"
+  },
+  "keywords": [
+    "perceived",
+    "performances",
+    "demo"
+  ],
+  "author": "Marco Pegoraro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcopeg/perceived-performances/issues"
+  },
+  "homepage": "https://github.com/marcopeg/perceived-performances#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "cheerio": "^0.19.0",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4"
+  }
+}
