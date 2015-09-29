@@ -24,6 +24,14 @@
         e.preventDefault();
         window.history.back();
     });
+    
+    // reset original page content
+    $(document).on('keyup', function(e) {
+        if (e.keyCode === 27) {
+            window.history.back();
+        };
+    });
+
     </script>
 </body>
 </html>

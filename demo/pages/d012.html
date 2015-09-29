@@ -10,22 +10,28 @@
         <div class="page-header">
             <h3>AJAX Link <small>- delay loading curtain</small></h3>
         </div>
-        <a href="d008f.html" class="btn btn-primary">
-            2.5s
-        </a>
-        <a href="d008b.html" class="btn btn-primary">
-            1.5s
-        </a>
-        <a href="d008g.html" class="btn btn-primary">
-            0.8s
-        </a>
-        <a href="d008d.html" class="btn btn-primary">
-            0.5s
-        </a>
-        <a href="d008e.html" class="btn btn-primary">
-            0.25s
-        </a>
-        <div id="content"></div>
+        <div class="row">
+            <div class="col-xs-6">
+                <p>
+                    <a href="d008f.html" class="btn btn-primary btn-block btn-lg">2.5s</a>
+                </p>
+                <p>
+                    <a href="d008b.html" class="btn btn-primary btn-block btn-lg">1.5s</a>
+                </p>
+                <p>
+                    <a href="d008g.html" class="btn btn-primary btn-block btn-lg">0.8s</a>
+                </p>
+                <p>
+                    <a href="d008d.html" class="btn btn-primary btn-block btn-lg">0.5s</a>
+                </p>
+                <p>
+                    <a href="d008e.html" class="btn btn-primary btn-block btn-lg">0.25s</a>
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <div id="content"></div>        
+            </div>
+        </div>
     </div>
 
     <!-- loading curtain element -->
@@ -45,6 +51,7 @@
         // block default click behaviour
         e.stopPropagation();
         e.preventDefault();
+        $(this).blur();
 
         var contentLoaded = $.Deferred();
         var curtainHandled = $.Deferred();
@@ -55,10 +62,10 @@
         $.get(e.target.href, function(data) {
             contentLoaded.resolve();
             if (!curtainStarted) {
-                $('#content').html('<hr>' + data);
+                $('#content').html(data);
             } else {
                 curtainDone.then(function() {
-                    $('#content').html('<hr>' + data);
+                    $('#content').html(data);
                 });
             }
         });

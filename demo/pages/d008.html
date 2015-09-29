@@ -10,22 +10,28 @@
         <div class="page-header">
             <h3>AJAX Link <small>- when ajax is too fast</small></h3>
         </div>
-        <a href="d008f.html" class="btn btn-primary">
-            2.5s
-        </a>
-        <a href="d008b.html" class="btn btn-primary">
-            1.5s
-        </a>
-        <a href="d008g.html" class="btn btn-primary">
-            0.8s
-        </a>
-        <a href="d008d.html" class="btn btn-primary">
-            0.5s
-        </a>
-        <a href="d008e.html" class="btn btn-primary">
-            0.25s
-        </a>
-        <div id="content"></div>
+        <div class="row">
+            <div class="col-xs-6">
+                <p>
+                    <a href="d008f.html" class="btn btn-primary btn-block btn-lg">2.5s</a>
+                </p>
+                <p>
+                    <a href="d008b.html" class="btn btn-primary btn-block btn-lg">1.5s</a>
+                </p>
+                <p>
+                    <a href="d008g.html" class="btn btn-primary btn-block btn-lg">0.8s</a>
+                </p>
+                <p>
+                    <a href="d008d.html" class="btn btn-primary btn-block btn-lg">0.5s</a>
+                </p>
+                <p>
+                    <a href="d008e.html" class="btn btn-primary btn-block btn-lg">0.25s</a>
+                </p>
+            </div>
+            <div class="col-xs-6">
+                <div id="content"></div>        
+            </div>
+        </div>
     </div>
 
     <!-- loading curtain element -->
@@ -39,10 +45,11 @@
      * simple AJAX link handling
      */
     $('a').on('click', function(e) {
+        $(this).blur();
         e.preventDefault();
         $('#loading-curtain').show();
         $.get($(this).attr('href'), function(res) {
-            $('#content').html('<hr>' + res);
+            $('#content').html(res);
             $('#loading-curtain').hide();
         });
     });

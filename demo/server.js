@@ -9,7 +9,7 @@ var app = express();
 // delayed HTML apis
 app.get('/ajax-link.html', serveWithDelay('ajax-link.html', 0));
 app.get('/d001b.html', serveWithDelay('d001b.html', 20000));
-app.get('/d003b.html', serveWithDelay('ajax-link.html', 3000));
+app.get('/d003b.html', serveWithDelay('ajax-link.html', 500, 7000));
 app.get('/d004b.html', serveWithDelay('ajax-link.html', 3000));
 app.get('/d005b.html', serveWithDelay('ajax-link.html', 3000));
 app.get('/d006b.html', serveWithDelay('ajax-link.html', 3000));
@@ -19,6 +19,8 @@ app.get('/d008d.html', serveWithDelay('ajax-link.html', 500));
 app.get('/d008e.html', serveWithDelay('ajax-link.html', 250));
 app.get('/d008f.html', serveWithDelay('ajax-link.html', 2500));
 app.get('/d008g.html', serveWithDelay('ajax-link.html', 800));
+app.get('/d008h.html', serveWithDelay('ajax-link.html', 4000));
+app.get('/d008i.html', serveWithDelay('ajax-link.html', 5000));
 app.get('/f001b.html', serveWithDelay('ajax-link.html', 3000));
 
 
@@ -33,8 +35,14 @@ var server = app.listen(3000, function() {
 
 // middleware to serve an HTML resource with a delay
 // and also handling an AJAX content request
-function serveWithDelay(uri, delay) {
+function serveWithDelay(uri, minDelay, maxDelay) {
     return function(req, res, next) {
+
+        var delay = minDelay;
+        if (maxDelay !== undefined) {
+            delay = Math.round(randomMinMax(Math.round(minDelay/1000), Math.round(maxDelay/1000))) * 1000;
+        }
+
         fs.readFile(path.join(__dirname, 'pages', uri), 'UTF-8', function(err, content) {
             setTimeout(function() {
                 
@@ -66,4 +74,9 @@ function randomGif() {
 
 function randomItem(list) {
     return list[Math.floor(Math.random()*list.length)];
+}
+
+function randomMinMax(min, max) {
+    var r = min + Math.random()*(max-min);
+    return r;
 }
