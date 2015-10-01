@@ -7,14 +7,31 @@
 </head>
 <body>
     <div class="container">
-        <div class="page-header">
-            <h3>AJAX Link <small>- loading spinner</small></h3>
+        <div class="page-header example-page-header">
+            <h3>... so we implemented the classic "loading spinner"</h3>
         </div>
-        <a href="d005b.html" class="btn btn-primary btn-lg btn-block">
-            Click here to load a content page
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </a>
-        <div id="content"></div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                 <a href="d005b.html" rel="example" class="btn btn-primary btn-lg btn-block">
+                    Click here to load a content page
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </a>
+                <div id="sl1" style="display:none">
+                    <hr />
+                    <p class="lead text-center">
+                        cool stuff, uh?
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-6">
+
+                <!-- this is the target element for AJAX actions -->
+                <div id="content"></div>
+
+
+            </div>
+        </div>
     </div>
 
     <!-- loading curtain element -->
@@ -27,15 +44,25 @@
     /**
      * simple AJAX link handling
      */
-    $('a').on('click', function(e) {
+    $(document).delegate('a[rel=example]', 'click', function(e) {
         e.preventDefault();
+
+        // show a loading spinner something
         $('#loading-curtain').show();
+
         $.get($(this).attr('href'), function(res) {
-            $('#content').html('<hr>' + res);
+            $('#content').html(res);
+
+            // hide the spinner
             $('#loading-curtain').hide();
         });
+
     });
 
+
+
+    // don't bother this...
+    $(document).ajaxSuccess(function() {$('#sl1').fadeIn()});
     </script>
 </body>
 </html>

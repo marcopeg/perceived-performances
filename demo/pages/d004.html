@@ -7,36 +7,52 @@
 </head>
 <body>
     <div class="container">
-        <div class="page-header">
-            <h3>AJAX Link</h3>
+        <div class="page-header example-page-header">
+            <h3>XHR (AJAX) can improve a link performance</h3>
         </div>
-        <a href="d004b.html" class="btn btn-primary btn-lg btn-block">
-            Click here to load a content page
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </a>
-        <div id="content"></div>
-    </div>
 
-    <!-- loading curtain element -->
-    <div id="loading-curtain" class="text"><span>loading...</span></div>
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="d004b.html" rel="example" class="btn btn-primary btn-lg btn-block">
+                    Click here to load a content page
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </a>
+                <div id="sl1" style="display:none">
+                    <hr />
+                    <p class="lead text-center">
+                        but AJAX doesn't give any native feedback!
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-6">
+
+                <!-- this is the target element for AJAX actions -->
+                <div id="content"></div>
+
+
+            </div>
+        </div>
+    </div>
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="index.js"></script>
     <script>
-
     /**
      * simple AJAX link handling
      */
-    $('a').on('click', function(e) {
+    $(document).delegate('a[rel=example]', 'click', function(e) {
         e.preventDefault();
-        $('#loading-curtain').show();
+
         $.get($(this).attr('href'), function(res) {
-            $('#content').html('<hr>' + res);
-            $('#loading-curtain').hide();
+            $('#content').html(res);
         });
+
     });
 
-    
+
+
+    // don't bother this...
+    $(document).ajaxSuccess(function() {$('#sl1').fadeIn()});
     </script>
 </body>
 </html>

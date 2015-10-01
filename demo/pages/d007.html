@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>d006 - Perceived Peformances</title>
+    <title>d007 - Perceived Peformances</title>
     <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="libs/animate.css" />
     <link rel="stylesheet" href="index.css" />
 </head>
 <body>
     <div class="container">
-        <div class="page-header">
-            <h3>AJAX Link <small>- loading game</small></h3>
+        <div class="page-header example-page-header">
+            <h3>can we improve the waiting time?</h3>
         </div>
-        <a href="d008i.html" class="btn btn-primary btn-lg btn-block">
-            Click here to load a content page
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </a>
-        <div id="content"></div>
+        <div class="row">
+            <div class="col-xs-6">
+                 <a href="d008i.html" rel="example" class="btn btn-primary btn-lg btn-block">
+                    Click here to load a content page
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </a>
+                <div id="sl1" style="display:none">
+                    <hr />
+                    <p class="lead text-center">
+                        I LOVE canvas arcade!
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-6">
+
+                <!-- this is the target element for AJAX actions -->
+                <div id="content"></div>
+
+
+            </div>
+        </div>
     </div>
 
     <!-- loading curtain element -->
     <div id="loading-curtain" class="game">
         <div class="game-container">
             <canvas id="canvas" width="450" height="250"></canvas>
-            <a href="#hide-curtain" class="game-close">
-                <span class="glyphicon glyphicon-remove"></span>
-            </a>
+            <div class="animated infinite pulse">
+                <a href="#hide-curtain" class="game-close">
+                    Stop playing and go back to your contents!
+                </a>
+            </div>
         </div>
     </div>
 
@@ -34,12 +53,17 @@
     /**
      * simple AJAX link handling
      */
-    $('.container a').on('click', function(e) {
+    $(document).delegate('a[rel=example]', 'click', function(e) {
         e.preventDefault();
+
+        // show a loading spinner and start the game
         $('#loading-curtain').show();
         startGame();
+
         $.get($(this).attr('href'), function(res) {
-            $('#content').html('<hr>' + res);
+            $('#content').html(res);
+
+            // hide the spinner
             $('#loading-curtain .game-close').show();
         });
     });
@@ -210,12 +234,13 @@
             else if(key == "40" && d != "up") d = "down";
             //The snake is now keyboard controllable
         });
-
     };
 
 
 
 
+    // don't bother this...
+    $(document).ajaxSuccess(function() {$('#sl1').fadeIn()});
     </script>
 </body>
 </html>

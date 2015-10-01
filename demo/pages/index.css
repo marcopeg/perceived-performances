@@ -1,4 +1,10 @@
 
+.example-page-header {
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+
 #loading-curtain {
     position: fixed;
     top:0; bottom:0;
@@ -78,16 +84,17 @@
 
 #loading-curtain.game .game-close {
     position: absolute;
-    top:-15px;
-    right:-15px;
-    display: block;
-    width: 40px;
-    height: 40px;
-    background: #ddd;
-    color: #000;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    box-shadow: 2px 2px 4px #333;
     display: none;
+
+    width: 100%;
+    top: -320px;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    text-align: center;
+    background: yellow;
+    color: blue;
+    font-size: 15pt;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
