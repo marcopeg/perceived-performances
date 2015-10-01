@@ -98,3 +98,16 @@
     padding: 10px 20px;
     border-radius: 20px;
 }
+
+#loading-curtain.fading {
+    display: block;
+    transform: translate(-100%, -100%);
+    transition: opacity 0.2s ease-in;
+    opacity: 0.01;
+}
+#loading-curtain.fading-active {
+    transform: translate(0, 0);
+}
+#loading-curtain.fading-visible {
+    opacity: 1;
+}

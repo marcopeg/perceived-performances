@@ -55,6 +55,7 @@
      */
     $(document).delegate('a[rel=example]', 'click', function(e) {
         e.preventDefault();
+        $(this).blur();
 
         // show a loading spinner and start the game
         $('#loading-curtain').show();

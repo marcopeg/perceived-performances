@@ -42,6 +42,7 @@
      */
     $(document).delegate('a[rel=example]', 'click', function(e) {
         e.preventDefault();
+        $(this).blur();
 
         $.get($(this).attr('href'), function(res) {
             $('#content').html(res);
