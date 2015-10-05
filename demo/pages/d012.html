@@ -8,34 +8,23 @@
 <body>
     <div class="container">
         <div class="page-header example-page-header">
-            <h3>... and avoid loading curtain for fast responses</h3>
+            <h3 onclick="$('#info').slideDown()">... <b>do not show</b> unuseful informations ...</h3>
+            <div id="info" style="display:none;padding-bottom:30px"><img src="images/image-delay.png" style="width:70%"></div>
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <p>
-                    <a href="d008f.html" rel="example" class="btn btn-primary btn-block btn-lg">2.5s</a>
-                </p>
-                <p>
-                    <a href="d008b.html" rel="example" class="btn btn-primary btn-block btn-lg">1.5s</a>
-                </p>
-                <p>
-                    <a href="d008g.html" rel="example" class="btn btn-primary btn-block btn-lg">0.8s</a>
-                </p>
-                <p>
-                    <a href="d008d.html" rel="example" class="btn btn-primary btn-block btn-lg">0.5s</a>
-                </p>
-                <p>
-                    <a href="d008e.html" rel="example" class="btn btn-primary btn-block btn-lg">0.25s</a>
-                </p>
+                <p><a href="d008f.html" rel="example" class="btn btn-primary btn-block btn-lg">2.5s</a></p>
+                <p><a href="d008b.html" rel="example" class="btn btn-primary btn-block btn-lg">1.5s</a></p>
+                <p><a href="d008g.html" rel="example" class="btn btn-primary btn-block btn-lg">0.8s</a></p>
+                <p><a href="d008d.html" rel="example" class="btn btn-primary btn-block btn-lg">0.5s</a></p>
+                <p><a href="d008e.html" rel="example" class="btn btn-primary btn-block btn-lg">0.25s</a></p>
             </div>
-            <div class="col-xs-6">
-                <div id="content"></div>        
-            </div>
+            <div class="col-xs-6"><div id="content"></div></div>
         </div>
     </div>
 
     <!-- loading curtain element -->
-    <div id="loading-curtain" class="spinner fading"><span></span></div>
+    <div id="loading-curtain" class="spinner fading fast"><span></span></div>
 
     <script src="jquery/dist/jquery.js"></script>
     <script src="index.js"></script>

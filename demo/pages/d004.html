@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <div class="page-header example-page-header">
-            <h3>XHR (AJAX) can improve a link performance</h3>
+            <h3>AJAX can improve a <b>link performance</b></h3>
         </div>
 
         <div class="row">
@@ -17,8 +17,7 @@
                     Click here to load a content page
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </a>
-                <div id="sl1" style="display:none">
-                    <hr />
+                <div id="sl1" style="display:none"><hr />
                     <p class="lead text-center">
                         but AJAX doesn't give any native feedback!
                     </p>
@@ -29,7 +28,6 @@
                 <!-- this is the target element for AJAX actions -->
                 <div id="content"></div>
 
-
             </div>
         </div>
     </div>
@@ -37,6 +35,7 @@
     <script src="jquery/dist/jquery.js"></script>
     <script src="index.js"></script>
     <script>
+
     /**
      * simple AJAX link handling
      */
@@ -44,8 +43,9 @@
         e.preventDefault();
         $(this).blur();
 
-        $.get($(this).attr('href'), function(res) {
-            $('#content').html(res);
+        // AJAX request and content content mutation
+        $.get($(this).attr('href'), function(fragment) {
+            $('#content').html(fragment);
         });
 
     });
@@ -53,7 +53,7 @@
 
 
     // don't bother this...
-    $(document).ajaxSuccess(function() {$('#sl1').fadeIn()});
+    $(document).ajaxSuccess(function(){setTimeout(function(){$('#sl1').fadeIn()},500)});
     </script>
 </body>
 </html>

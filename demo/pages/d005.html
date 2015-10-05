@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <div class="page-header example-page-header">
-            <h3>... so we implemented the classic "loading spinner"</h3>
+            <h3>... so we implemented the classic <b>loading spinner</b></h3>
         </div>
 
         <div class="row">
@@ -17,8 +17,7 @@
                     Click here to load a content page
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 </a>
-                <div id="sl1" style="display:none">
-                    <hr />
+                <div id="sl1" style="display:none"><hr />
                     <p class="lead text-center">
                         cool stuff, uh?
                     </p>
@@ -28,7 +27,6 @@
 
                 <!-- this is the target element for AJAX actions -->
                 <div id="content"></div>
-
 
             </div>
         </div>
@@ -63,7 +61,7 @@
 
 
     // don't bother this...
-    $(document).ajaxSuccess(function() {$('#sl1').fadeIn()});
+    $(document).ajaxSuccess(function(){setTimeout(function(){$('#sl1').fadeIn()},500)});
     </script>
 </body>
 </html>
