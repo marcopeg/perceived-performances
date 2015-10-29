@@ -8,10 +8,17 @@ var app = express();
 
 // delayed HTML apis
 app.get('/ajax-link.html', serveWithDelay('ajax-link.html', 0));
+// <<<<<<< Updated upstream
 app.get('/d001b.html', serveWithDelay('d001b.html', 20000));
 app.get('/d003b.html', serveWithDelay('ajax-link.html', 3000, 7000));
 app.get('/d004b.html', serveWithDelay('ajax-link.html', 1000));
 app.get('/d005b.html', serveWithDelay('ajax-link.html', 2000));
+// =======
+// app.get('/d001b.html', serveWithDelay('d001b.html', 10000));
+// app.get('/d003b.html', serveWithDelay('ajax-link.html', 3000));
+// app.get('/d004b.html', serveWithDelay('ajax-link.html', 3000));
+// app.get('/d005b.html', serveWithDelay('ajax-link.html', 3000));
+// >>>>>>> Stashed changes
 app.get('/d006b.html', serveWithDelay('ajax-link.html', 3000));
 app.get('/d008b.html', serveWithDelay('ajax-link.html', 1500));
 app.get('/d008c.html', serveWithDelay('ajax-link.html', 1000));
